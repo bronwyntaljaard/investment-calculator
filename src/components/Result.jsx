@@ -1,6 +1,7 @@
-export default function Result({ duration }) {
-	let durationArray = Array.from({ length: duration });
+import { calculateInvestmentResults } from "../util/investment";
+import { formatter } from "../util/investment";
 
+export default function Result({ result, initialInvestment }) {
 	return (
 		<>
 			<table id="result">
@@ -14,13 +15,20 @@ export default function Result({ duration }) {
 					</tr>
 				</thead>
 				<tbody>
-					{durationArray.map((year, index) => (
+					{Object.entries(result).map(([index, entry]) => (
 						<tr key={index}>
-							<td>{index + 1}</td>
-							<td>Investment Value</td>
-							<td>Interest</td>
-							<td>Total Interest</td>
-							<td>Invested Capital</td>
+							<td>{entry.year}</td>
+							<td>{formatter.format(entry.valueEndOfYear)}</td>
+							<td>{formatter.format(entry.interest)}</td>
+							<td>
+								Total Interest
+								{/* Need to add total interest, clean up code, rename functions correctly in App.jsx */}
+							</td>
+							<td>
+								{formatter.format(
+									entry.year * entry.annualInvestment + initialInvestment
+								)}
+							</td>
 						</tr>
 					))}
 				</tbody>

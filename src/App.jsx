@@ -2,20 +2,47 @@ import Header from "./components/Header";
 import UserInput from "./components/UserInput";
 import Result from "./components/Result";
 
+import { calculateInvestmentResults } from "./util/investment";
+
 import { useState } from "react";
 
 function App() {
-	const [duration, setDuration] = useState();
+	const [investmentResults, setInvestmentResults] = useState({
+		duration: "",
+		initialInvestment: "",
+		annualInvestment: "",
+		expectedReturn: "",
+	});
+	console.log("investmentResults1", investmentResults);
 
 	function handleChange(event) {
-		setDuration(event.target.value);
+		const { name, value } = event.target;
+
+		let updatedInvestmentResults = {
+			...investmentResults,
+			[name]: +value,
+		};
+		console.log("updatedInvestmentResults", updatedInvestmentResults);
+		setInvestmentResults(updatedInvestmentResults);
+		console.log("investmentResults", investmentResults);
 	}
+
+	let calculatedInvestmentResults =
+		calculateInvestmentResults(investmentResults);
+	console.log("calculatedInvestmentResults", calculatedInvestmentResults);
 
 	return (
 		<main>
 			<Header />;
-			<UserInput handleChange={handleChange} />
-			<Result duration={duration} />
+			<UserInput
+				duration={investmentResults.duration}
+				expectedReturn={investmentResults.expectedReturn}
+				handleChange={handleChange}
+			/>
+			<Result
+				result={calculatedInvestmentResults}
+				initialInvestment={investmentResults.initialInvestment}
+			/>
 		</main>
 	);
 }
