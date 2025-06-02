@@ -13,7 +13,6 @@ function App() {
 		annualInvestment: "",
 		expectedReturn: "",
 	});
-	console.log("investmentResults1", investmentResults);
 
 	function handleChange(event) {
 		const { name, value } = event.target;
@@ -22,14 +21,11 @@ function App() {
 			...investmentResults,
 			[name]: +value,
 		};
-		console.log("updatedInvestmentResults", updatedInvestmentResults);
 		setInvestmentResults(updatedInvestmentResults);
-		console.log("investmentResults", investmentResults);
 	}
 
 	let calculatedInvestmentResults =
 		calculateInvestmentResults(investmentResults);
-	console.log("calculatedInvestmentResults", calculatedInvestmentResults);
 
 	return (
 		<main>

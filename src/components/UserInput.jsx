@@ -38,6 +38,7 @@ export default function UserInput({
 						type="number"
 						id="expected-return"
 						name="expectedReturn"
+						step="0.1"
 						required
 						value={expectedReturn}
 						onChange={handleChange}

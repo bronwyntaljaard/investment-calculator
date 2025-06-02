@@ -21,8 +21,11 @@ export default function Result({ result, initialInvestment }) {
 							<td>{formatter.format(entry.valueEndOfYear)}</td>
 							<td>{formatter.format(entry.interest)}</td>
 							<td>
-								Total Interest
-								{/* Need to add total interest, clean up code, rename functions correctly in App.jsx */}
+								{/* Need to clean up code, rename functions correctly in App.jsx */}
+								{formatter.format(
+									entry.valueEndOfYear -
+										(entry.year * entry.annualInvestment + initialInvestment)
+								)}
 							</td>
 							<td>
 								{formatter.format(
