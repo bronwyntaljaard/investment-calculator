@@ -1,10 +1,10 @@
-// import image, import component into App, to github
+import logo from "../assets/investment-calculator-logo.png";
 
 export default function Header() {
 	return (
 		<header id="header">
+			<img src={logo} alt="Logo showing money bag"></img>
 			<h1>Investment Calculator</h1>
-			<img src="investment-calculator-logo.png"></img>
 		</header>
 	);
 }
