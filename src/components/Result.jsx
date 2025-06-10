@@ -13,8 +13,8 @@ export default function Result({ result, initialInvestment }) {
 				</tr>
 			</thead>
 			<tbody>
-				{Object.entries(result).map(([index, entry]) => (
-					<tr key={index}>
+				{result.map((entry) => (
+					<tr key={entry.year}>
 						<td>{entry.year}</td>
 						<td>{formatter.format(entry.valueEndOfYear)}</td>
 						<td>{formatter.format(entry.interest)}</td>
