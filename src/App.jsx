@@ -40,7 +40,7 @@ function App() {
 				handleChange={handleChange}
 			/>
 			{!inputIsValid && (
-				<p className="center">Please enter a duration greater than 0</p>
+				<p className="center">Please enter a duration greater than 0.</p>
 			)}
 			{inputIsValid && (
 				<Result
