@@ -14,6 +14,10 @@ function App() {
 		expectedReturn: "",
 	});
 
+	// Check if input is valid
+
+	const inputIsValid = investmentResults.duration >= 1;
+
 	function handleChange(event) {
 		const { name, value } = event.target;
 
@@ -35,10 +39,15 @@ function App() {
 				expectedReturn={investmentResults.expectedReturn}
 				handleChange={handleChange}
 			/>
-			<Result
-				result={calculatedInvestmentResults}
-				initialInvestment={investmentResults.initialInvestment}
-			/>
+			{!inputIsValid && (
+				<p className="center">Please enter a duration greater than 0</p>
+			)}
+			{inputIsValid && (
+				<Result
+					result={calculatedInvestmentResults}
+					initialInvestment={investmentResults.initialInvestment}
+				/>
+			)}
 		</main>
 	);
 }
